@@ -1,1 +1,32 @@
 
+# 1. The name of the workflow as it appears in the Actions tab
+name: GitHub Actions Demo
+
+# 2. The event trigger (What starts the workflow)
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+# 3. The automation jobs to execute
+jobs:
+  build-and-test:
+    # Define the type of virtual machine runner
+    runs-on: ubuntu-latest
+
+    # The sequence of tasks to execute sequentially
+    steps:
+      # Step 1: Clone your repository code into the runner
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      # Step 2: Run a single-line shell command
+      - name: Run a one-line script
+        run: echo "Hello from GitHub Actions!"
+
+      # Step 3: Run a multi-line script
+      - name: Run a multi-line script
+        run: |
+          echo "Current directory:"
+          pwd
